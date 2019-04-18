@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mnu_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/mnu_wallpaper"
+        android:icon="@drawable/ic_image"
+        android:title="@string/wallpaper"/>
+
+    <item
+        android:id="@+id/mnu_category"
+        android:icon="@drawable/ic_folder"
+        android:title="@string/category"/>
+    <item
+        android:id="@+id/mnu_favorites"
+        android:icon="@drawable/ic_star"
+        android:title="@string/favorites"/>
+
+
+</menu>
