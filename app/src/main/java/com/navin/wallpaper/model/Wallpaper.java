@@ -1,9 +1,12 @@
 package com.navin.wallpaper.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Wallpaper {
+public class Wallpaper implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -59,6 +62,39 @@ public class Wallpaper {
     @SerializedName("category_image_thumb")
     @Expose
     private String categoryImageThumb;
+
+    protected Wallpaper(Parcel in) {
+        id = in.readString();
+        catId = in.readString();
+        mp3Type = in.readString();
+        mp3Title = in.readString();
+        mp3Url = in.readString();
+        mp3ThumbnailB = in.readString();
+        mp3ThumbnailS = in.readString();
+        mp3Duration = in.readString();
+        mp3Artist = in.readString();
+        mp3Description = in.readString();
+        totalRate = in.readString();
+        rateAvg = in.readString();
+        totalViews = in.readString();
+        totalDownload = in.readString();
+        cid = in.readString();
+        categoryName = in.readString();
+        categoryImage = in.readString();
+        categoryImageThumb = in.readString();
+    }
+
+    public static final Creator<Wallpaper> CREATOR = new Creator<Wallpaper>() {
+        @Override
+        public Wallpaper createFromParcel(Parcel in) {
+            return new Wallpaper(in);
+        }
+
+        @Override
+        public Wallpaper[] newArray(int size) {
+            return new Wallpaper[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -204,4 +240,30 @@ public class Wallpaper {
         this.categoryImageThumb = categoryImageThumb;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(catId);
+        dest.writeString(mp3Type);
+        dest.writeString(mp3Title);
+        dest.writeString(mp3Url);
+        dest.writeString(mp3ThumbnailB);
+        dest.writeString(mp3ThumbnailS);
+        dest.writeString(mp3Duration);
+        dest.writeString(mp3Artist);
+        dest.writeString(mp3Description);
+        dest.writeString(totalRate);
+        dest.writeString(rateAvg);
+        dest.writeString(totalViews);
+        dest.writeString(totalDownload);
+        dest.writeString(cid);
+        dest.writeString(categoryName);
+        dest.writeString(categoryImage);
+        dest.writeString(categoryImageThumb);
+    }
 }
