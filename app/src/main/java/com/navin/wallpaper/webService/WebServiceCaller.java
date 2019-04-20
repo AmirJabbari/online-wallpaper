@@ -98,5 +98,27 @@ public class WebServiceCaller {
 
     }
 
+    public void getWallpaperBYCat(final IMessageListener iMessageListener,String id) throws Exception{
+
+        Call<List<Wallpaper>> getWallpaperBYCat=apiInterface.getWallpaperBYCat(id);
+        getWallpaperBYCat.enqueue(new Callback<List<Wallpaper>>() {
+            @Override
+            public void onResponse(Call<List<Wallpaper>> call, Response<List<Wallpaper>> response) {
+                iMessageListener.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Wallpaper>> call, Throwable t) {
+                iMessageListener.onError((t.getMessage()));
+            }
+        });
+
+
+
+
+    }
+
+
+
 
 }

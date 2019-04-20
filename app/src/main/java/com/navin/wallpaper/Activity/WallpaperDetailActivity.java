@@ -33,6 +33,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
     Bundle bundle;
     Wallpaper wallpaper;
 
+
     @BindView(R.id.img_wallpaper)
     AppCompatImageView imgWallpaper;
     @BindView(R.id.btn_setWallPaper)

@@ -10,6 +10,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface IWallpaperHandler {
 
@@ -23,6 +24,9 @@ public interface IWallpaperHandler {
 
     @GET("api.php?album_list")
     public Call<List<Album>> getAlbum();
+
+    @GET("api.php")
+    public Call<List<Wallpaper>> getWallpaperBYCat(@Query("cat_id") String id);
 
 
 }

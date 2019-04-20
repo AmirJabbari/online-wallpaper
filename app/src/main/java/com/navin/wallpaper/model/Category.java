@@ -1,9 +1,12 @@
 package com.navin.wallpaper.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Category {
+public class Category implements Parcelable {
 
 
     @SerializedName("cid")
@@ -18,6 +21,27 @@ public class Category {
     @SerializedName("category_image_thumb")
     @Expose
     private String categoryImageThumb;
+
+    public Category(){}
+
+    protected Category(Parcel in) {
+        cid = in.readString();
+        categoryName = in.readString();
+        categoryImage = in.readString();
+        categoryImageThumb = in.readString();
+    }
+
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        @Override
+        public Category createFromParcel(Parcel in) {
+            return new Category(in);
+        }
+
+        @Override
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
 
     public String getCid() {
         return cid;
@@ -51,4 +75,16 @@ public class Category {
         this.categoryImageThumb = categoryImageThumb;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(cid);
+        dest.writeString(categoryName);
+        dest.writeString(categoryImage);
+        dest.writeString(categoryImageThumb);
+    }
 }

@@ -1,6 +1,7 @@
 package com.navin.wallpaper.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.navin.wallpaper.Activity.GetWallpaperByCatActivity;
 import com.navin.wallpaper.R;
 import com.navin.wallpaper.adapter.CategoriesAdapter;
 import com.navin.wallpaper.model.Category;
@@ -54,6 +56,9 @@ public class CategoryFragment extends Fragment {
                         CategoriesAdapter categoriesAdapter=new CategoriesAdapter(getActivity(),responseCategory);
                         recyclerViewCategory.setAdapter(categoriesAdapter);
                         recyclerViewCategory.setLayoutManager(new GridLayoutManager(getActivity(),2));
+
+
+
                     }
 
                     @Override
