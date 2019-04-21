@@ -53,7 +53,7 @@ public class WallpaperFragment extends Fragment {
                 public void onSuccess(List<Wallpaper> response) {
                     AllWallpaperAdapter allWallpaperAdapter=new AllWallpaperAdapter(getActivity(),response);
                     recyclerViewAllWallpaper.setAdapter(allWallpaperAdapter);
-                  recyclerViewAllWallpaper.setLayoutManager(new GridLayoutManager(getActivity(),3));
+                  recyclerViewAllWallpaper.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
 
                 }

@@ -41,7 +41,7 @@ public class GetWallpaperByCatActivity extends AppCompatActivity {
         if (category!=null){
 
           getAllWallpaper();
-            //Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
         }
         else
             Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_LONG).show();
@@ -50,17 +50,7 @@ public class GetWallpaperByCatActivity extends AppCompatActivity {
     }
 
 
-    public void getAllWallpaperByCat(){
-        getAllWallpaper();
 
-
-
-
-
-
-
-
-    }
 
     public void getAllWallpaper(){
 
@@ -68,12 +58,16 @@ public class GetWallpaperByCatActivity extends AppCompatActivity {
             webServiceCaller.getWallpaperBYCat(new IMessageListener() {
                 @Override
                 public void onSuccess(List<Wallpaper> wallpaperList) {
-                    Toast.makeText(getApplicationContext(),category,Toast.LENGTH_LONG).show();
-
+                 //   Toast.makeText(getApplicationContext(),category,Toast.LENGTH_LONG).show();
+                    wallpaperByCatAdapter=new WallpaperByCatAdapter(getApplicationContext(),wallpaperList);
+                    recyclerView.setAdapter(wallpaperByCatAdapter);
+                    recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+                    Log.e("","");
                 }
 
                 @Override
                 public void onError(String errorResponse) {
+                    Log.e("","");
 
                 }
             },category);
