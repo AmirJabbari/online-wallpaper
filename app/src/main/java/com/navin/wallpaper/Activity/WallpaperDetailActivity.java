@@ -14,6 +14,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.navin.wallpaper.R;
 import com.navin.wallpaper.model.Wallpaper;
 import com.squareup.picasso.Picasso;
@@ -32,6 +38,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
 
     Bundle bundle;
     Wallpaper wallpaper;
+    String wallpaperr;
 
 
     @BindView(R.id.img_wallpaper)
@@ -50,10 +57,48 @@ public class WallpaperDetailActivity extends AppCompatActivity {
         if (wallpaper!=null){
 
             Picasso.with(getApplicationContext()).load(wallpaper.getMp3ThumbnailB()).into(imgWallpaper);
+            Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_LONG);
+            Log.e("","");
+
+        }
+        else if(wallpaperr!=null){
+            Picasso.with(getApplicationContext()).load(wallpaperr).into(imgWallpaper);
+            Toast.makeText(getApplicationContext(),"ok wallpaper",Toast.LENGTH_LONG);
+            Log.e("wallpaperr","wallpaperr");
+
+
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG);
+            Log.e("","");
+            Toast.makeText(getApplicationContext(),"sorry",Toast.LENGTH_LONG);
+
+
         }
         btnSetWallpaper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Dexter.withActivity(WallpaperDetailActivity.this).withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .withListener(new PermissionListener() {
+                            @Override
+                            public void onPermissionGranted(PermissionGrantedResponse response) {
+                                Log.e("","");
+                                
+                            }
+
+                            @Override
+                            public void onPermissionDenied(PermissionDeniedResponse response) {
+                                Log.e("","");
+
+                            }
+
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                                Log.e("","");
+
+                            }
+                        }).check();
 
 
 
