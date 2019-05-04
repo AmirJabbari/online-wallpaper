@@ -45,9 +45,6 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.ViewHolder
         viewHolder.textView.setText(album.getAlbumName());
         Picasso.with(context).load(album.getAlbumImage())
                 .into(viewHolder.imageView);
-
-
-
     }
 
     @Override

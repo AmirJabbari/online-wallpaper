@@ -8,7 +8,8 @@
     <string name="latest">Latest</string>
     <string name="more">More</string>
     <string name="album">Album</string>
-    <string name="set_background">Set Picture as Background</string>
+    <string name="set_background">Set Wallpaper</string>
+    <string name="download">Download Wallpaper</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
