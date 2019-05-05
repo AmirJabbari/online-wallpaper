@@ -2,6 +2,8 @@ package com.navin.wallpaper.fragment;
 
 
 import android.os.Bundle;
+import android.support.design.internal.BottomNavigationMenu;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -45,6 +47,8 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerViewLatest;
     @BindView(R.id.lin_more)
     LinearLayout lin_more;
+    @BindView(R.id.lin_more_album)
+    LinearLayout lin_more_album;
     @BindView(R.id.recycler_album)
     RecyclerView recyclerViewAlbum;
     @BindView(R.id.frm)
@@ -60,6 +64,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view =inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this,view);
+        //final View mView =inflater.inflate(R.layout.activity_main, container, false);
+        //final BottomNavigationView bottomNavigationMenu=mView.findViewById(R.id.bottom_menu);
+
         slider.slider(getActivity(),sliderLayout);
         webServiceCaller= new WebServiceCaller(getContext());
         getLatestWallpaper();
@@ -70,6 +77,7 @@ public class HomeFragment extends Fragment {
 
                 getFragmentManager().beginTransaction().replace(R.id.frm,new WallpaperFragment()).commit();
                 //frm.setVisibility(View.GONE);
+             //   bottomNavigationMenu.getMenu().getItem(R.id.mnu_category).setChecked(true);
                 relativeLayout.setVisibility(View.GONE);
                 getActivity().setTitle(getResources().getString(R.string.wallpaper));
 

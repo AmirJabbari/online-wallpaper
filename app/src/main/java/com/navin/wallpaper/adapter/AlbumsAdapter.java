@@ -1,14 +1,17 @@
 package com.navin.wallpaper.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.navin.wallpaper.Activity.GetWallpaperByAlbumActivity;
 import com.navin.wallpaper.R;
 import com.navin.wallpaper.model.Album;
 import com.squareup.picasso.Picasso;
@@ -40,11 +43,22 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Album album=albumList.get(i);
         viewHolder.textView.setText(album.getAlbumName());
         Picasso.with(context).load(album.getAlbumImage())
                 .into(viewHolder.imageView);
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Album album=albumList.get(i);
+                Intent intent=new Intent(context, GetWallpaperByAlbumActivity.class);
+                intent.putExtra("album",album.getAid());
+                context.startActivity(intent);
+
+
+            }
+        });
     }
 
     @Override
@@ -56,11 +70,13 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.ViewHolder
 
         AppCompatImageView imageView;
         AppCompatTextView textView;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.img_album);
             textView=itemView.findViewById(R.id.txt_title);
+            cardView=itemView.findViewById(R.id.card);
         }
     }
 }

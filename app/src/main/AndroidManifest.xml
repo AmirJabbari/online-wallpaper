@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.GetWallpaperByCatActivity"></activity>
+        <activity android:name=".Activity.GetWallpaperByAlbumActivity"></activity>
+        <activity android:name=".Activity.GetWallpaperByCatActivity" />
         <activity android:name=".Activity.WallpaperDetailActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

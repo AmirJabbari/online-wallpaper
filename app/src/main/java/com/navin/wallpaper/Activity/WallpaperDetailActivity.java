@@ -41,7 +41,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
     Wallpaper wallpaper;
     String wallpaperr;
 
-    public static final int REQUEST_CODE_SET_WALLPAPER = 0x1001;
+
     @BindView(R.id.img_wallpaper)
     AppCompatImageView imgWallpaper;
     @BindView(R.id.btn_setWallPaper)
@@ -55,6 +55,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         bundle=getIntent().getExtras();
         wallpaper=bundle.getParcelable("wallpaper");
+
 
         if (wallpaper!=null){
 

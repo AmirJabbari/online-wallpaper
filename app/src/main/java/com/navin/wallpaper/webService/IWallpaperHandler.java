@@ -28,5 +28,8 @@ public interface IWallpaperHandler {
     @GET("api.php")
     public Call<List<Wallpaper>> getWallpaperBYCat(@Query("cat_id") String id);
 
+    @GET("api.php")
+    public Call<List<Wallpaper>> getWallpaperBYAlbum(@Query("album_id") String id);
+
 
 }
