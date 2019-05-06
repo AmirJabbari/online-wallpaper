@@ -15,16 +15,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.GetWallpaperByAlbumActivity"></activity>
-        <activity android:name=".Activity.GetWallpaperByCatActivity" />
-        <activity android:name=".Activity.WallpaperDetailActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.GetWallpaperByAlbumActivity" />
+        <activity android:name=".Activity.GetWallpaperByCatActivity" />
+        <activity android:name=".Activity.WallpaperDetailActivity" />
+        <activity android:name=".MainActivity">
+
+        </activity>
+
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
     </application>
 
 </manifest>

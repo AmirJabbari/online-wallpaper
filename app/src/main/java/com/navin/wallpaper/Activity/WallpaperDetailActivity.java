@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -41,6 +45,8 @@ public class WallpaperDetailActivity extends AppCompatActivity {
     Wallpaper wallpaper;
     String wallpaperr;
 
+    private InterstitialAd mInterstitialAd;
+
 
     @BindView(R.id.img_wallpaper)
     AppCompatImageView imgWallpaper;
@@ -55,12 +61,16 @@ public class WallpaperDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         bundle=getIntent().getExtras();
         wallpaper=bundle.getParcelable("wallpaper");
-
+        MobileAds.initialize(this, "YOUR_ADMOB_APP_ID");
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         if (wallpaper!=null){
 
             Picasso.with(getApplicationContext()).load(wallpaper.getMp3ThumbnailB()).into(imgWallpaper);
             Log.e("","");
+         //   Snackbar.make(findViewById(android.R.id.content),"a",Snackbar.LENGTH_LONG).show();
 
          /*   Picasso.with(getApplicationContext()).load(new File
                     ("/storage/emulated/0/Download/17499_2.jpg")).into(imgWallpaper)*/;
@@ -90,6 +100,11 @@ public class WallpaperDetailActivity extends AppCompatActivity {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse response) {
                                 Log.e("","");
+                                if (mInterstitialAd.isLoaded()) {
+                                    mInterstitialAd.show();
+                                } else {
+                                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                                }
                                 setWalpaper();
                             }
 
@@ -117,11 +132,15 @@ public class WallpaperDetailActivity extends AppCompatActivity {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse response) {
                                 startDownload();
+                                Snackbar.make(findViewById(android.R.id.content),
+                                        getResources().getString(R.string.download),Snackbar.LENGTH_LONG).show();
                             }
 
                             @Override
                             public void onPermissionDenied(PermissionDeniedResponse response) {
-                                Toast.makeText(getApplicationContext(),"Access Denied",Toast.LENGTH_LONG).show();
+                                Snackbar.make(findViewById(android.R.id.content),
+                                        getResources().getString(R.string.denied),Snackbar.LENGTH_LONG).show();
+
                             }
 
                             @Override
@@ -163,15 +182,15 @@ public class WallpaperDetailActivity extends AppCompatActivity {
             if (file.exists()){
                 Bitmap myBitmap =  BitmapFactory.decodeFile(file.getAbsolutePath());
                 wallpaperManager.setBitmap(myBitmap);
-                Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
+               // Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(getApplicationContext(), "failed set wallpaper", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getApplicationContext(), "failed set wallpaper", Toast.LENGTH_LONG).show();
+                Snackbar.make(findViewById(android.R.id.content),getResources().getString(R.string.failed_set_wallpaper),Snackbar.LENGTH_LONG).show();
             }
         } catch (IOException e) {
             e.printStackTrace();
 
-            Toast.makeText(getApplicationContext(),"failed",Toast.LENGTH_LONG).show();
 
         }
 

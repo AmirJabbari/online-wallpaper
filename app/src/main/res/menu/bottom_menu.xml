@@ -15,10 +15,10 @@
         android:id="@+id/mnu_category"
         android:icon="@drawable/ic_folder"
         android:title="@string/category"/>
-    <item
+    <!--<item
         android:id="@+id/mnu_favorites"
         android:icon="@drawable/ic_star"
-        android:title="@string/favorites"/>
+        android:title="@string/favorites"/>-->
 
 
 </menu>

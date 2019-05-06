@@ -21,14 +21,14 @@ public class slider implements BaseSliderView.OnSliderClickListener, ViewPagerEx
         this.context=context;
         urlPick = new ArrayList();
         names = new ArrayList();
-        names.add("Boy");
-        names.add("Girl");
-        names.add("fanteasy");
-        names.add("Baby");
-        urlPick.add("https://homeandroid.ir/wp-content/uploads/2017/04/Android-Image-Slide.jpg");
-        urlPick.add("http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
-        urlPick.add("https://homeandroid.ir/wp-content/uploads/2017/04/Android-Image-Slide.jpg");
-        urlPick.add("https://homeandroid.ir/wp-content/uploads/2019/03/kotlin-android-cover.jpg");
+        names.add("Wallpaper");
+        names.add("Wallpaper");
+        names.add("Wallpaper");
+        names.add("Wallpaper");
+        urlPick.add("http://androidframework.com/apps/wallpaper/slider/slider1.jpg");
+        urlPick.add("http://androidframework.com/apps/wallpaper/slider/slider2.jpg");
+        urlPick.add("http://androidframework.com/apps/wallpaper/slider/slider3.jpg");
+        urlPick.add("http://androidframework.com/apps/wallpaper/slider/slider4.jpg");
         for (int i =0;i<urlPick.size();i++) {
             TextSliderView textSliderView = new TextSliderView(context);
             textSliderView.image((String) urlPick.get(i)).setScaleType(BaseSliderView.ScaleType.Fit)

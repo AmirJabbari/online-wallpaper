@@ -50,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
                         toolbar.setTitle(getResources().getString(R.string.category));
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,new CategoryFragment()).commit();
                         break;
-                    case R.id.mnu_favorites:
+                /*    case R.id.mnu_favorites:
                         toolbar.setTitle(getResources().getString(R.string.favorites));
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,new FavoriteFragment()).commit();
-                        break;
+                        break;*/
                     case R.id.mnu_wallpaper:
                         toolbar.setTitle(getResources().getString(R.string.wallpaper));
 
