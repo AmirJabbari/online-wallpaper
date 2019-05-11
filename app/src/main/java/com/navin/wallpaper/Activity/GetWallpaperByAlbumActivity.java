@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.navin.wallpaper.R;
@@ -25,6 +27,8 @@ public class GetWallpaperByAlbumActivity extends AppCompatActivity {
     @BindView(R.id.recycler_wallpaper)
     RecyclerView recyclerView;
     WallpaperByAlbumAdapter wallpaperByAlbumAdapter;
+    @BindView(R.id.backButton)
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +38,16 @@ public class GetWallpaperByAlbumActivity extends AppCompatActivity {
         webServiceCaller=new WebServiceCaller(getApplicationContext());
         bundle=getIntent().getExtras();
         album=bundle.getString("album");
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         if (album!=null){
 
             getAllWallpaper();
-            Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
         }
 
     }

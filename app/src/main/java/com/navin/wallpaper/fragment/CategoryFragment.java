@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.navin.wallpaper.Activity.GetWallpaperByCatActivity;
 import com.navin.wallpaper.R;
@@ -36,7 +37,8 @@ public class CategoryFragment extends Fragment {
     @BindView(R.id.recycler_category)
     RecyclerView recyclerViewCategory;
     WebServiceCaller webServiceCaller=new WebServiceCaller(getContext());
-
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class CategoryFragment extends Fragment {
                 webServiceCaller.getCategories(new IMessageCategoryListener() {
                     @Override
                     public void onSuccess(List<Category> responseCategory) {
+                        progressBar.setVisibility(View.GONE);
                         CategoriesAdapter categoriesAdapter=new CategoriesAdapter(getActivity(),responseCategory);
                         recyclerViewCategory.setAdapter(categoriesAdapter);
                         recyclerViewCategory.setLayoutManager(new GridLayoutManager(getActivity(),2));
@@ -63,6 +66,7 @@ public class CategoryFragment extends Fragment {
 
                     @Override
                     public void onError(String Error) {
+                        progressBar.setVisibility(View.VISIBLE);
 
                     }
                 });

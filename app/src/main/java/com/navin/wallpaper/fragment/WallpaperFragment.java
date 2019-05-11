@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.navin.wallpaper.R;
 import com.navin.wallpaper.adapter.AllWallpaperAdapter;
@@ -34,6 +35,8 @@ public class WallpaperFragment extends Fragment {
     @BindView(R.id.recycler_allwallpaper)
     RecyclerView recyclerViewAllWallpaper;
     WebServiceCaller webServiceCaller;
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,15 +54,19 @@ public class WallpaperFragment extends Fragment {
             webServiceCaller.getAllWallpaper(new IMessageListener() {
                 @Override
                 public void onSuccess(List<Wallpaper> response) {
+                    progressBar.setVisibility(View.GONE);
+
                     AllWallpaperAdapter allWallpaperAdapter=new AllWallpaperAdapter(getActivity(),response);
                     recyclerViewAllWallpaper.setAdapter(allWallpaperAdapter);
-                  recyclerViewAllWallpaper.setLayoutManager(new GridLayoutManager(getActivity(),2));
+                    RecyclerView.LayoutManager manager=new GridLayoutManager(getActivity(),2);
+                    recyclerViewAllWallpaper.setLayoutManager(manager);
 
 
                 }
 
                 @Override
                 public void onError(String errorResponse) {
+                    progressBar.setVisibility(View.VISIBLE);
 
                 }
             });

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClinet {
 
-    public static String BASE_URL="http://mrsolution.ir/wallpaper/";
+    public static String BASE_URL="http://androidframework.com/apps/wallpaper/";
     public static Retrofit retrofit =null;
     public static Retrofit getClinet(){
 

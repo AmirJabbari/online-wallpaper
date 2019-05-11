@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.navin.wallpaper.R;
@@ -30,6 +32,8 @@ public class GetWallpaperByCatActivity extends AppCompatActivity {
     @BindView(R.id.recycler_wallpaper)
     RecyclerView recyclerView;
     WallpaperByCatAdapter wallpaperByCatAdapter;
+    @BindView(R.id.backButton)
+    LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,12 @@ public class GetWallpaperByCatActivity extends AppCompatActivity {
       //  wallpaper=bundle.getParcelable("wallpaper");
         bundle=getIntent().getExtras();
         category=bundle.getString("category");
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         if (category!=null){
 
           getAllWallpaper();

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.navin.wallpaper.adapter.AlbumsAdapter;
@@ -55,6 +56,8 @@ public class HomeFragment extends Fragment {
     FrameLayout frm;
     @BindView(R.id.rel_none)
     RelativeLayout relativeLayout;
+    @BindView(R.id.progress)
+            ProgressBar progressBar;
 
     com.navin.wallpaper.utils.slider slider = new slider();
     WebServiceCaller webServiceCaller;
@@ -92,6 +95,7 @@ public class HomeFragment extends Fragment {
             webServiceCaller.getLatestWallpaper(new IMessageListener() {
                 @Override
                 public void onSuccess(List<Wallpaper> response) {
+                    progressBar.setVisibility(View.GONE);
                     WallpapersAdapter wallpapersAdapter = new WallpapersAdapter(getActivity(),response);
 
                     recyclerViewLatest.setAdapter(wallpapersAdapter);
@@ -104,6 +108,8 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onError(String errorResponse) {
                     Log.e("","");
+                    progressBar.setVisibility(View.GONE);
+
                 }
             });
         } catch (Exception e) {

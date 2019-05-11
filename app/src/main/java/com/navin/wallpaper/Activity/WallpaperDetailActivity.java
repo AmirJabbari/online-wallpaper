@@ -61,9 +61,9 @@ public class WallpaperDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         bundle=getIntent().getExtras();
         wallpaper=bundle.getParcelable("wallpaper");
-        MobileAds.initialize(this, "YOUR_ADMOB_APP_ID");
+        MobileAds.initialize(this, "ca-app-pub-4917820623973019~9207182398");
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-4917820623973019/2491522817");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         if (wallpaper!=null){
@@ -100,11 +100,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse response) {
                                 Log.e("","");
-                                if (mInterstitialAd.isLoaded()) {
-                                    mInterstitialAd.show();
-                                } else {
-                                    Log.d("TAG", "The interstitial wasn't loaded yet.");
-                                }
+
                                 setWalpaper();
                             }
 
@@ -134,17 +130,22 @@ public class WallpaperDetailActivity extends AppCompatActivity {
                                 startDownload();
                                 Snackbar.make(findViewById(android.R.id.content),
                                         getResources().getString(R.string.download),Snackbar.LENGTH_LONG).show();
+                                Log.e("","");
+
                             }
 
                             @Override
                             public void onPermissionDenied(PermissionDeniedResponse response) {
                                 Snackbar.make(findViewById(android.R.id.content),
                                         getResources().getString(R.string.denied),Snackbar.LENGTH_LONG).show();
+                                Log.e("","");
+
 
                             }
 
                             @Override
                             public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                                Log.e("","");
 
                             }
                         }).check();
@@ -164,7 +165,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
         request.setDescription("Downloading Wallpaper please wait ....");
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,uri.getLastPathSegment());
+        request.setDestinationInExternalPublicDir("glitterWall/",uri.getLastPathSegment());
         DownloadManager downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
         downloadManager.enqueue(request);
 
@@ -173,7 +174,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
 
     private void setWalpaper(){
 
-        File file = new File("/storage/emulated/0/Download/"+wallpaper.getMp3Title());
+        File file = new File("/storage/emulated/0/glitterWall/"+wallpaper.getMp3Title());
 
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(getBaseContext());
 
@@ -182,7 +183,9 @@ public class WallpaperDetailActivity extends AppCompatActivity {
             if (file.exists()){
                 Bitmap myBitmap =  BitmapFactory.decodeFile(file.getAbsolutePath());
                 wallpaperManager.setBitmap(myBitmap);
-               // Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
+                Snackbar.make(findViewById(android.R.id.content),getResources().getString(R.string.set_wallpaper),Snackbar.LENGTH_LONG).show();
+
+                // Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
             }
             else {
               //  Toast.makeText(getApplicationContext(), "failed set wallpaper", Toast.LENGTH_LONG).show();
@@ -194,7 +197,12 @@ public class WallpaperDetailActivity extends AppCompatActivity {
 
         }
 
-
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
     }

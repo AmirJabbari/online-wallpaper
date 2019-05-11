@@ -44,7 +44,7 @@ public class AllWallpaperAdapter extends RecyclerView.Adapter<AllWallpaperAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Wallpaper wallpaper =wallpaperList.get(i);
-           viewHolder.textView.setText(wallpaper.getCategoryName());
+ //          viewHolder.textView.setText(wallpaper.getCategoryName());
         Picasso.with(context).load(wallpaper.getMp3ThumbnailB()).into(viewHolder.imageView);
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,14 +66,14 @@ public class AllWallpaperAdapter extends RecyclerView.Adapter<AllWallpaperAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         AppCompatImageView imageView;
-        AppCompatTextView textView;
+   //     AppCompatTextView textView;
         CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
             imageView=itemView.findViewById(R.id.img_wallpaper);
-            textView=itemView.findViewById(R.id.txt_category);
+           // textView=itemView.findViewById(R.id.txt_category);
             cardView=itemView.findViewById(R.id.card);
 
         }

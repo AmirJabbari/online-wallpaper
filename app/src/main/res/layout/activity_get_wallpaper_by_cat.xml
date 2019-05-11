@@ -6,9 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Activity.GetWallpaperByCatActivity">
 
+    <include
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_back"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_margin="10dp"
+        android:layout_below="@id/toolbar"
         android:id="@+id/recycler_wallpaper"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

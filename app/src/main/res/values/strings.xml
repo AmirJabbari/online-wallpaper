@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WallPaper</string>
+    <string name="app_name">Glitter Wall</string>
 
     <string name="home">Home</string>
     <string name="category">Categories</string>
@@ -12,6 +12,7 @@
     <string name="download">Download Wallpaper</string>
     <string name="denied">Permission Denied</string>
     <string name="failed_set_wallpaper">Failed Set Wallpaper,First Download Walpaper</string>
+    <string name="set_wallpaper">Set Wallpaper SuccessFull</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
