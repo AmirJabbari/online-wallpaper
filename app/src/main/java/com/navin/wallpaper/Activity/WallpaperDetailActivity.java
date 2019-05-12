@@ -18,6 +18,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -50,10 +51,10 @@ public class WallpaperDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.img_wallpaper)
     AppCompatImageView imgWallpaper;
-    @BindView(R.id.btn_setWallPaper)
-    AppCompatButton btnSetWallpaper;
-    @BindView(R.id.btn_download)
-    AppCompatButton btnDownload;
+    @BindView(R.id.set_wallpaper)
+    RelativeLayout btnSetWallpaper;
+    @BindView(R.id.download_wallpaper)
+    RelativeLayout downloadWallpaper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,7 +121,7 @@ public class WallpaperDetailActivity extends AppCompatActivity {
 
             }
         });
-        btnDownload.setOnClickListener(new View.OnClickListener() {
+        downloadWallpaper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dexter.withActivity(WallpaperDetailActivity.this).withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)

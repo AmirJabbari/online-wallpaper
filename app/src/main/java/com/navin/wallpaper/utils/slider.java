@@ -1,6 +1,7 @@
 package com.navin.wallpaper.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -8,6 +9,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.navin.wallpaper.Activity.GetWallpaperByCatActivity;
 import com.navin.wallpaper.R;
 
 import java.util.ArrayList;
@@ -21,14 +23,11 @@ public class slider implements BaseSliderView.OnSliderClickListener, ViewPagerEx
         this.context=context;
         urlPick = new ArrayList();
         names = new ArrayList();
-        names.add("Wallpaper");
-        names.add("Wallpaper");
-        names.add("Wallpaper");
-        names.add("Wallpaper");
+        names.add("Amine");
+        names.add("fantasy");
         urlPick.add("http://androidframework.com/apps/wallpaper/slider/slider1.jpg");
-        urlPick.add("http://androidframework.com/apps/wallpaper/slider/slider2.jpg");
-        urlPick.add("http://androidframework.com/apps/wallpaper/slider/slider3.jpg");
-        urlPick.add("http://androidframework.com/apps/wallpaper/slider/slider4.jpg");
+        urlPick.add("http://androidframework.com/apps/wallpaper/slider/fantasy.jpg");
+
         for (int i =0;i<urlPick.size();i++) {
             TextSliderView textSliderView = new TextSliderView(context);
             textSliderView.image((String) urlPick.get(i)).setScaleType(BaseSliderView.ScaleType.Fit)
@@ -47,7 +46,19 @@ public class slider implements BaseSliderView.OnSliderClickListener, ViewPagerEx
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-        Toast.makeText(context,slider.getBundle().get("extra")+"",Toast.LENGTH_LONG).show();
+        switch (slider.getBundle().getString("extra")){
+            case "Amine":
+                Intent intent=new Intent(context, GetWallpaperByCatActivity.class);
+                intent.putExtra("category","8");
+                context.startActivity(intent);
+                break;
+            case "fantasy":
+                Intent intent_new=new Intent(context, GetWallpaperByCatActivity.class);
+                intent_new.putExtra("category","3");
+                context.startActivity(intent_new);
+                break;
+
+        }
     }
 
     @Override

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.WallpaperDetailActivity">
 
 
     <RelativeLayout
-        android:layout_weight="5"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.CardView
-            android:layout_margin="20dp"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:cardCornerRadius="4dp"
@@ -35,39 +34,59 @@
 
 
 
-    <RelativeLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_setWallPaper"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="25dp"
-            android:text="@string/set_background"
-            android:layout_width="wrap_content"
-            android:background="@drawable/shape_gradiant_2"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"/>
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_download"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="25dp"
-            android:text="@string/download"
-            android:layout_width="wrap_content"
-            android:background="@drawable/shape_gradiant_4"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"/>
+        <RelativeLayout
+            android:layout_marginBottom="40dp"
+            android:id="@+id/rel_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
-    </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginLeft="110dp"
+                android:id="@+id/download_wallpaper"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:background="@drawable/circle"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="26dp"
+                    android:layout_height="46dp"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_file_download_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:outlineAmbientShadowColor="#D2333333"
+                android:layout_marginLeft="50dp"
+                android:layout_toRightOf="@id/download_wallpaper"
+                android:id="@+id/set_wallpaper"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:background="@drawable/circle"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="26dp"
+                    android:layout_height="46dp"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_image_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </RelativeLayout>
 
 
-</LinearLayout>
+
+        </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>
+
+
