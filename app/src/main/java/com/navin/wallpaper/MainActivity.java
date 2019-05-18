@@ -1,6 +1,7 @@
 package com.navin.wallpaper;
 
 
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +14,11 @@ import com.navin.wallpaper.fragment.FavoriteFragment;
 import com.navin.wallpaper.fragment.HomeFragment;
 import com.navin.wallpaper.fragment.WallpaperFragment;
 
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.ronash.pushe.Pushe;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,9 +35,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Locale locale = new Locale("en");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        Pushe.initialize(this,true);
+
      //   slider.slider(this,sliderLayout);
 
 
